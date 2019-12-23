@@ -1,6 +1,11 @@
 console.log("before");
 
-_getUser("o134ghemj", user => console.log("user", user));
+_getUser("o134ghemj", user => {
+  console.log("user", user);
+
+  //get user repos
+  getRepos(user.gitHubUsername);
+});
 
 console.log("intermediate");
 
@@ -10,7 +15,15 @@ function _getUser(id, callback) {
   setTimeout(() => {
     console.log("Reading user from dB...");
     callback({ id: id, gitHubUsername: "pinchez254" });
-  }, 2000);
+  }, 1000);
+}
+
+function getRepos(name) {
+  let repos = ["repo1", "repo2", "repo3.."];
+  setTimeout(() => {
+    console.log(`fetching ${name} github repos..`);
+    console.log(repos);
+  }, 1000);
 }
 
 //Promises
