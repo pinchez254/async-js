@@ -4,7 +4,9 @@ _getUser("o134ghemj", user => {
   console.log("user", user);
 
   //get user repos
-  getRepos(user.gitHubUsername);
+  getRepos(user.gitHubUsername, repos => {
+    console.log(repos);
+  });
 });
 
 console.log("intermediate");
@@ -18,11 +20,11 @@ function _getUser(id, callback) {
   }, 1000);
 }
 
-function getRepos(name) {
+function getRepos(name, callback) {
   let repos = ["repo1", "repo2", "repo3.."];
   setTimeout(() => {
     console.log(`fetching ${name} github repos..`);
-    console.log(repos);
+    callback(repos);
   }, 1000);
 }
 
