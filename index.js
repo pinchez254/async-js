@@ -48,7 +48,8 @@ function getRepos(name) {
     console.log(`fetching ${name} github repos..`)
     setTimeout(() => {
       let repos = ['repo1', 'repo2', 'repo3..']
-      resolve(repos)
+      // resolve(repos)
+      reject(Error(`Could not get ${name} github repos..`))
     }, 500)
   })
 }
@@ -56,11 +57,14 @@ function getRepos(name) {
 // Async / Await
 
 async function displayRepos() {
-  const user = await _getUser('fivub18e680')
-  console.log('user', user)
-  const repos = await getRepos(user.gitHubUsername)
-  console.log('Repos', repos)
+  try {
+    const user = await _getUser('fivub18e680')
+    console.log('user', user)
+    const repos = await getRepos(user.gitHubUsername)
+    console.log('Repos', repos)
+  } catch (err) {
+    console.log(err)
+  }
 }
-
 displayRepos()
 //async function
