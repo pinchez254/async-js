@@ -6,12 +6,12 @@ const p1 = new Promise((resolve, reject) => {
   }, 1000)
 })
 
-const p2 = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    console.log('fetching promise Two')
-    resolve(2)
-  }, 1000)
-})
+// const p2 = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     console.log('fetching promise Two')
+//     resolve(2)
+//   }, 1000)
+// })
 
 Promise.race([p1, p2])
   .then(result => console.log(result))

@@ -29,10 +29,10 @@ console.log('after')
 // }
 
 //Promises
-_getUser('134ghemj134ghemj')
-  .then(user => getRepos(user.gitHubUsername))
-  .then(repos => console.log('Repos', repos))
-  .catch(err => console.log('Error!', err.message))
+// _getUser('134ghemj134ghemj')
+//   .then(user => getRepos(user.gitHubUsername))
+//   .then(repos => console.log('Repos', repos))
+//   .catch(err => console.log('Error!', err.message))
 
 function _getUser(id) {
   console.log('Reading user from dB...')
@@ -54,4 +54,13 @@ function getRepos(name) {
 }
 
 // Async / Await
+
+async function displayRepos() {
+  const user = await _getUser('fivub18e680')
+  console.log('user', user)
+  const repos = await getRepos(user.gitHubUsername)
+  console.log('Repos', repos)
+}
+
+displayRepos()
 //async function
