@@ -29,7 +29,10 @@ console.log('after')
 // }
 
 //Promises
-const _logUser = _getUser('134ghemj134ghemj').then(user => console.log(user))
+_getUser('134ghemj134ghemj')
+  .then(user => getRepos(user.gitHubUsername))
+  .then(repos => console.log('Repos', repos))
+
 function _getUser(id) {
   console.log('Reading user from dB...')
   return new Promise((resolve, reject) => {
@@ -41,11 +44,11 @@ function _getUser(id) {
 
 function getRepos(name) {
   return new Promise((resolve, reject) => {
-    let repos = ['repo1', 'repo2', 'repo3..']
+    console.log(`fetching ${name} github repos..`)
     setTimeout(() => {
-      console.log(`fetching ${name} github repos..`)
+      let repos = ['repo1', 'repo2', 'repo3..']
       resolve(repos)
-    }, 1000)
+    }, 500)
   })
 }
 
