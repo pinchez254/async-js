@@ -32,6 +32,7 @@ console.log('after')
 _getUser('134ghemj134ghemj')
   .then(user => getRepos(user.gitHubUsername))
   .then(repos => console.log('Repos', repos))
+  .catch(err => console.log('Error!', err.message))
 
 function _getUser(id) {
   console.log('Reading user from dB...')
